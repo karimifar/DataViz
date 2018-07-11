@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>DataViz Tool</title>
+        <!-- <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet"> -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,900" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        
+        <!-- GSAP library -->
+        <script src="assets/js/EasePack.min.js"></script>
+        <script src="assets/js/TimelineMax.min.js"></script>
+        <script src="assets/js/TweenMax.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <form>
+                        <div class="form-group form-el">
+                            <h3> Find Health Measures In Your ZIP Code:</h3>
+                            <input type="text" class="form-control" id="zipcode-input" placeholder="78701">
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn-primary form-el custom-btn">Submit</button>
+
+                    </form>
+                </div>
+
+                <div class="col-md-4 top-text">
+                    <div id="top-text">
+                        <h1>Infant Mortality Rate In <span id ="thePlace">Texas</span> is:</h1>
+                        <p><span id="bigNumber">5.48</span> /1000 births</p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 graphDiv">
+                    <div class="svgDiv">
+
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 537 203.5" style="enable-background:new 0 0 537 203.5;" xml:space="preserve">
+                            <g id="state-rates">
+                                <text transform="matrix(1 0 0 1 151 107.2619)" class="stateRate-text">5.10</text>
+                                <text transform="matrix(1 0 0 1 229 68.5952)" class="stateRate-text">10.74</text>
+                                <text transform="matrix(1 0 0 1 155 29.5952)" class="stateRate-text">5.48</text>
+                                <text transform="matrix(1 0 0 1 145 146.2619)" class="stateRate-text">4.70</text>
+                            </g>
+                            <g id="graph-content">
+                                
+                                
+                                <rect id="All-mBar" x="85" y="31.7" class="graphBar-m" width="76" height="19.4"/>
+                                <rect id="All-zipBar" x="85" y="31.7" class="graphBar" width="76" height="19.4"/>
+                                <line id="All-medLine" class="median-line" x1="161" y1="31.7" x2="161" y2="51"/>
+                                <text id="allImr-text" transform="matrix(1 0 0 1 169.6455 44.8475)" class="rate-text">5.48</text>
+                                
+
+                                <rect id="B-mBar" x="85" y="70.7" class="graphBar-m" width="149" height="19.4"/>
+                                <rect id="B-zipBar" x="85" y="70.7" class="graphBar" width="149" height="19.4"/>
+                                <line id="B-medLine" class="median-line" x1="234" y1="70.7" x2="234" y2="90"/>
+                                <text id="bImr-text" transform="matrix(1 0 0 1 243.4783 84.8475)" class="rate-text">10.74</text>
+                                
+
+                                <rect id="H-mBar" x="85" y="109.7" class="graphBar-m" width="71" height="19.4"/>
+                                <rect id="H-zipBar" x="85" y="109.7" class="graphBar" width="71" height="19.4"/>
+                                <line id="H-medLine" class="median-line" x1="156" y1="109.7" x2="156" y2="129.1"/>
+                                <text id="hImr-text" transform="matrix(1 0 0 1 164.8117 124.0975)" class="rate-text">5.10</text>
+                                
+
+                                <rect id="W-mBar" x="85" y="148.7" class="graphBar-m" width="65" height="19.4"/>
+                                <rect id="W-zipBar" x="85" y="148.7" class="graphBar" width="65" height="19.4"/>
+                                <line id="W-medLine" class="median-line" x1="150" y1="148.7" x2="150" y2="168.1"/>
+                                <text id="wImr-text" transform="matrix(1 0 0 1 157.4783 163.7704)" class="rate-text">4.70</text>
+
+                                <line id="baseline" class="baseline" x1="85" y1="187.2" x2="85" y2="17.1"/>
+                            </g>
+                            <g id="legends">
+                                <text id="W-leg" transform="matrix(1 0 0 1 31.1631 163.7703)" class="graph-text">White</text>
+                                <text id="All-leg" transform="matrix(1 0 0 1 23.4033 46.7704)" class="graph-text">Overall</text>
+                                <text id="B-leg" transform="matrix(1 0 0 1 35.8027 84.8475)" class="graph-text">Black</text>
+                                <text id="H-leg" transform="matrix(1 0 0 1 13.5151 122.7703)" class="graph-text">Hispanic</text>
+                            </g>
+                        </svg>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+            
+        </div>
+
+    </body>
+    <script src="assets/js/app.js"></script>
+
+</html>
