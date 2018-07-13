@@ -38,6 +38,18 @@ app.post("/api/imr", function(req,res){
     })
 })
 
+app.put("/api/imr", function(req,res){
+    console.log(req.body)
+    var dataArray = req.body.geoStuff
+    connection.query("UPDATE imr SET Lat=?, Lng=?, City=?, County=? WHERE Zip=?", dataArray ,function(err,data){
+        if (err) throw err;
+        res.send(data)
+    })
+})
+
 app.listen(PORT, function(){
     console.log("App now listening on localhost:" + PORT)
 })
+
+
+

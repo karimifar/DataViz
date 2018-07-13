@@ -1,3 +1,10 @@
+var mymap = L.map('map').setView([31, -99], 6);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    maxZoom: 18,
+    id: 'mapbox.run-bike-hike',
+    accessToken: 'pk.eyJ1Ijoia2FyaW1pZmFyIiwiYSI6ImNqOGtnaWp4OTBjemsyd211ZDV4bThkNmIifQ.Xg-Td2FFJso83Mmmc87NDA'
+}).addTo(mymap);
+
 var scale = 13.86;
 
 var oldWidthAll = parseInt($("#All-zipBar").attr("width"))
@@ -6,14 +13,71 @@ var oldWidthH = parseInt($("#H-zipBar").attr("width"))
 var oldWidthW = parseInt($("#W-zipBar").attr("width"))
 
 $("#submit-btn").on("click", function(){
+
+    
     event.preventDefault();
     var userZip = $("#zipcode-input").val().trim();
     var input = {
         zipcode: userZip
     }
+
+    
+
     $.post("/api/imr", input)
 
     .then(function(data){
+        
+
+        var zipLat = data[0].Lat;
+        var zipLng = data[0].Lng;
+        var zipCity = data[0].City;
+        var zipCounty = data[0].County;
+
+        console.log(zipLat, zipLng)
+
+        if(zipLat === null || zipLng === null){
+            $.ajax({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address="+userZip + "&key=AIzaSyDpzc2sQEkJ1uXW8ljWuxZHld3rdVYrJ2Y",
+                method: "GET"
+            }).then(function(response){
+
+                zipLat= response.results[0].geometry.location.lat;
+                zipLng= response.results[0].geometry.location.lng;
+                zipCity= response.results[0].address_components[1].short_name;
+                zipCounty=response.results[0].address_components[2].short_name;
+                var sendData= {
+                    geoStuff: [
+                        zipLat,
+                        zipLng,
+                        zipCity,
+                        zipCounty,
+                        userZip,
+                    ]
+                }
+                mymap.flyTo([zipLat, zipLng],13);
+
+                console.log(sendData)
+                $.ajax({
+                    url: "/api/imr",
+                    method: "PUT",
+                    data: sendData,
+                    dataType: "json",
+                })
+                .then(function(response){
+                    console.log("Geo stuff added!", response)
+                })
+
+            })
+
+            
+
+        }else{
+            mymap.flyTo([zipLat, zipLng],13);
+        }
+        
+       
+
+
         var allImr = data[0].IMR;
         var bImr = data[0].IMR_B;
         var hImr = data[0].IMR_H;
@@ -65,15 +129,15 @@ $("#submit-btn").on("click", function(){
         .to("#W-zipBar", 1, {scaleX: newWidthW/oldWidthW, transformOrigin: "0% 50%" }, "=-1")
         .to("#wImr-text", 1, {x: newWidthW + 93}, "=-1")
 
-        // oldWidthAll = newWidthAll
-        // oldWidthB = newWidthB
-        // oldWidthH = newWidthH
-        // oldWidthW = newWidthW
-        console.log(data[0])
+         //Leaflet map stuff
+         
+
+
+
+        })
     })
 
-    
-})
+
 
 
 function openingAnimation(){
@@ -82,3 +146,6 @@ function openingAnimation(){
 
 }
 openingAnimation();
+
+
+

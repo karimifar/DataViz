@@ -30,7 +30,12 @@ CREATE TABLE imr (
     Flag_W INTEGER(1),
     Flag_B INTEGER(1),
     Flag_H INTEGER(1),
+    Lat FLOAT,
+    Lng FlOAT,
     PRIMARY KEY (id)
 );
 
+
 SELECT * FROM imr;
+
+SELECT max(IMR_B) FROM imr;

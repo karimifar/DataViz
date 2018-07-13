@@ -58,3 +58,7 @@ svg{
     font-size: 5px;
     fill: #ccc;
 }
+
+#map{
+    height: 300px;
+}
