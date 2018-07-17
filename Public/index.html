@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>DataViz Tool</title>
+        <link rel="stylesheet" href="https://use.typekit.net/eey6yny.css">
+
         <!-- <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet"> -->
         <!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,900" rel="stylesheet"> -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -27,36 +29,69 @@
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
     </head>
+    <style>
 
+    </style>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <form>
-                        <div class="form-group form-el">
-                            <h3> Find Health Measures In Your ZIP Code:</h3>
-                            <input type="text" class="form-control" id="zipcode-input" placeholder="78701">
-                        </div>
-                        <button type="submit" id="submit-btn" class="btn-primary form-el custom-btn">Submit</button>
+            <div id= "header-div" class="row justify-content-center">
 
-                    </form>
+                    <div class="col-lg-3 col-md-5 header-text">
+                            <h3 class = "headline"> Find Health Measures In Your ZIP Code:</h3>
+                    </div>
+    
+                    <div class="col-lg-2 col-md-4">
+                        <form>
+                            <div class="form-group form-el">                  
+                                <input type="text" class="form-control" id="zipcode-input" placeholder="Ex: 78702">
+                                <button type="submit" id="submit-btn" class="btn form-el custom-btn form-control">
+                                    <svg version="1.1" id="searchBtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 200 200" xml:space="preserve">
+                                        <path class="search-icon" d="M179.9,157.5l-38.8-38.8c-5.8,9-13.4,16.7-22.4,22.4l38.8,38.8c6.2,6.2,16.3,6.2,22.4,0
+                                            C186.1,173.7,186.1,163.7,179.9,157.5L179.9,157.5z M179.9,157.5"/>
+                                        <path class="search-icon" d="M142.3,78.8c0-35.1-28.4-63.5-63.5-63.5c-35.1,0-63.5,28.4-63.5,63.5c0,35.1,28.4,63.5,63.5,63.5
+                                            C113.8,142.2,142.3,113.8,142.3,78.8L142.3,78.8z M78.8,126.4c-26.3,0-47.6-21.4-47.6-47.6c0-26.3,21.4-47.6,47.6-47.6
+                                            c26.3,0,47.6,21.4,47.6,47.6C126.4,105,105,126.4,78.8,126.4L78.8,126.4z M78.8,126.4"/>
+                                        <path class="search-icon" d="M41.7,78.8h10.6c0-14.6,11.9-26.5,26.5-26.5V41.7C58.3,41.7,41.7,58.3,41.7,78.8L41.7,78.8z M41.7,78.8"/>
+                                    </svg>
+                                   
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+    
                 </div>
 
-                <div class="col-md-4 top-text">
+        <div class="body-container">
+
+            
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-4 top-text">
                     <div id="top-text">
                         <h1>Infant Mortality Rate In <span id ="thePlace">Texas</span> is:</h1>
-                        <p><span id="bigNumber">5.48</span> /1000 births</p>
-
+                        <p>
+                            <span id="bigNumber">5.48</span> /1000 births<br>
+                        </p>
+                        <hr>
+                        <p id="where" class="invisible">
+                            This ZIP code is located in <span id="zip-city"></span>, <span id="zip-county"></span>
+                        </p>
                     </div>
-
-                    
                 </div>
-
-                <div class="col-md-6 graphDiv">
+                <div class="col-lg-5 col-md-8 graphDiv">
                     <div class="svgDiv">
-
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 537 203.5" style="enable-background:new 0 0 537 203.5;" xml:space="preserve">
+                            <defs>
+                                <!-- <linearGradient id="all-grad">
+                                    <stop offset="0%" stop-color="#0000ff"/>
+                                    <stop id= "stop-2" offset="100%" stop-color="#0000ff"/>
+                                </linearGradient>
+                                <linearGradient id="allBad-grad">
+                                    <stop offset="0%" stop-color="#0000ff"/>
+                                    <stop id= "stop-2" offset="100%" stop-color="#99170D"/>
+                                </linearGradient> -->
+                            </defs>
                             <g id="state-rates">
                                 <text transform="matrix(1 0 0 1 151 107.2619)" class="stateRate-text">5.10</text>
                                 <text transform="matrix(1 0 0 1 229 68.5952)" class="stateRate-text">10.74</text>
@@ -99,19 +134,60 @@
                             </g>
                         </svg>
                     </div>
-                    
-
+                    <hr>
+                    <div id="table" class="invisible">
+                        <h4>Technical Notes</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Overall</th>
+                                    <th scope="col">Black</th>
+                                    <th scope="col">Hispanic</th>
+                                    <th scope="col">White</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nubmer of Births</th>
+                                    <td id="all-birth"></td>
+                                    <td id="b-birth"></td>
+                                    <td id="h-birth"></td>
+                                    <td id="w-birth"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">95% Confidence Interval</th>
+                                    <td id="all-ci"></td>
+                                    <td id="b-ci"></td>
+                                    <td id="h-ci"></td>
+                                    <td id="w-ci"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
+                <div class="col-lg-4 col-md-12">
+                    <div id="map"></div>
+                </div>
             </div>
 
             <div class="row">
-                <div class="col-12">
-                <div id="map"></div>
+
+                
+            </div>        
+        </div>
+
+            <div class="push"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="footerContainer">
+                <div class="">
+                    <img id="uts-logo" class="footer-logo" src="assets/img/uts-logo.png">
+                    <img id="thj-logo" class="footer-logo" src="assets/img/thj-logo.png">
                 </div>
             </div>
-            
-        </div>
+        </footer>
 
     </body>
     <script src="assets/js/app.js"></script>
