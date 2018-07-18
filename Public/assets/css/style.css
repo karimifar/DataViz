@@ -127,15 +127,15 @@ html, body{
 }
 
 .header-div{
-    height: 35vh;
-    padding: 100px 10px;
+    height: auto;
+    padding: 80px 10px;
     background: #0000ff;
     color: white;
     margin-bottom: 10px;
     transition: all 0.5s ease-in-out; 
 }
 #small-header{
-    height: 10vh;
+    height: auto;
     padding: 10px 20px;
     transition: all 0.5s ease-in-out; 
 }
