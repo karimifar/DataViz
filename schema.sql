@@ -3,6 +3,7 @@ CREATE DATABASE imr_db;
 
 USE imr_db;
 
+
 CREATE TABLE imr (
     id int NOT NULL AUTO_INCREMENT,
     Zip INTEGER(5) NOT NULL,
@@ -32,6 +33,8 @@ CREATE TABLE imr (
     Flag_H INTEGER(1),
     Lat FLOAT,
     Lng FlOAT,
+    City VARCHAR(45),
+    County VARCHAR (45),
     PRIMARY KEY (id)
 );
 
