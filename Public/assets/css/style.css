@@ -103,6 +103,9 @@ img.footer-logo {
     padding-right: 30px; 
     padding-top: 20px; 
     width: 100%;
+    position: fixed;
+    bottom:0;
+    z-index: 10000;
 }
 
 html, body{
