@@ -19,7 +19,10 @@ var wMed = 4.70;
 
 $("#submit-btn").on("click", function(){
 
-    
+    $(".header-text").attr("class", "col-lg-4 col-md-7 header-text" )
+    $(".input-div").attr("class", "col-lg-2 col-md-5 input-div" )
+    // $("#header-div").attr("class","header-div row justify-content-left")
+    $("#header-div").attr("id","small-header")
     event.preventDefault();
     $("#table").attr("class", "visible")
     var userZip = $("#zipcode-input").val().trim();

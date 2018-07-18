@@ -19,7 +19,7 @@ body{
 }
 
 .body-container{
-    padding: 100px 10%;
+    padding: 30px 10%;
     max-width: 100%;
 }
 h3{
@@ -88,7 +88,7 @@ svg{
 }
 
 #map{
-    height: 40vh;
+    height: 280px;
     width: 100%;
 }
 
@@ -123,24 +123,46 @@ html, body{
     float: left;
 }
 
-#header-div{
+.header-div{
     height: 35vh;
-    padding: 100px 0;
+    padding: 100px 10px;
     background: #0000ff;
     color: white;
     margin-bottom: 10px;
+    transition: all 0.5s ease-in-out; 
 }
+#small-header{
+    height: 10vh;
+    padding: 10px 20px;
+    transition: all 0.5s ease-in-out; 
+}
+
+#small-header h3.headline{
+    font-size: 26px;
+    transition: all 0.5s ease-in-out; 
+}
+
 .header-text{
     padding: 10px;
+    transition: all 0.5s ease-in-out;
 }
-.form-group{
-    position: relative;
+
+#small-header .header-text{
+    transition: all 0.5s ease-in-out;
 }
+
 #zipcode-input{
     height: 60px;
     width:100%;
     padding: 20px;
     border-radius: 30px;
+    transition: all 0.5s ease-in-out;
+}
+
+#small-header #zipcode-input{
+    height: 35px;
+    padding: 10px;
+    transition: all 0.5s ease-in-out;
 }
 
 #submit-btn{
@@ -152,6 +174,19 @@ html, body{
     /* background: #eee; */
     border-radius: 30px;
     color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+#small-header #submit-btn{
+    width: 25px;
+    margin-left: -30px;
+    margin-top: 5px;
+    padding: 3px;
+    height: 25px;
+    /* background: #eee; */
+    border-radius: 12px;
+    color: white;
+    transition: all 0.5s ease-in-out;
 }
 
 #submit-btn:hover{
@@ -188,6 +223,7 @@ h3.headline{
 
 #table{
     padding: 30px;
+    padding-top: 0;
 }
 .table{
     font-size: 12px;
