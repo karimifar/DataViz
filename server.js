@@ -10,15 +10,21 @@ app.use(bodyParser.json());
 
 app.use(express.static("Public"));
 
+var connection;
 
 var mysql = require("mysql");
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 8889,
-    user: "root",
-    password: "root",
-    database: "imr_db",
-})
+if(process.env.JAWSDB_URL){
+    connection= mysql.creayeConnection(process.env.JAWSDB_URL);
+}else{
+    connection = mysql.createConnection({
+        host: "localhost",
+        port: 8889,
+        user: "root",
+        password: "root",
+        database: "imr_db",
+    });
+}
+
 
 connection.connect( function(err){
     if (err) throw err;
