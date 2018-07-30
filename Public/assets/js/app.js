@@ -17,7 +17,7 @@ var bMed = 10.74;
 var hMed = 5.10;
 var wMed = 4.70;
 
-$("#submit-btn").on("click", function(){
+$("#submit-btn").on("click", function(event){
     $(".rate-text").attr("class", "rate-text")
     $(".header-text").attr("class", "col-lg-4 col-md-7 header-text" )
     $(".input-div").attr("class", "col-lg-2 col-md-5 input-div" )
