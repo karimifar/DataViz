@@ -113,7 +113,7 @@ $("#submit-btn").on("click", function(event){
     
 
         $("#bigNumber").text(allImr)
-        $("#thePlace").text("ZIP: "+ userZip)
+        $("#thePlace").text(userZip)
         
         if(allImr === null){
             $("#allImr-text").text("Not enough data")
